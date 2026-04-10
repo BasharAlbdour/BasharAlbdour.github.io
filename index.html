@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bashar Albdour — AI/ML Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #1a2e44;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --cream-dark: #e8e0d0;
+      --text-primary: #0d1b2a;
+      --text-secondary: #3a4a5c;
+      --text-muted: #7a8a9a;
+      --white: #ffffff;
+      --card-border: rgba(13, 27, 42, 0.09);
+      --tag-bg: rgba(201, 168, 76, 0.11);
+      --tag-text: #7a5c18;
+      --placeholder-border: rgba(13, 27, 42, 0.1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 0 2.5rem;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--gold);
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 8rem 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+    }
+
+    .hero-ring-1 {
+      width: 600px;
+      height: 600px;
+      top: -180px;
+      right: -180px;
+    }
+
+    .hero-ring-2 {
+      width: 380px;
+      height: 380px;
+      bottom: -100px;
+      left: -100px;
+    }
+
+    .hero-ring-3 {
+      width: 900px;
+      height: 900px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.35;
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .hero-name span {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.55);
+      max-width: 580px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.65s forwards;
+    }
+
+    .hero-badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: rgba(201, 168, 76, 0.8);
+      border-radius: 2px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.9rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5.5rem 2.5rem;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      color: var(--text-primary);
+      margin-bottom: 0.9rem;
+      line-height: 1.15;
+    }
+
+    .divider {
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 2.75rem;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .about-text strong {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      padding: 1.25rem 1rem;
+      border-radius: 3px;
+    }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.1rem;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      line-height: 1.3;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--white);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+      border-left: 2px solid var(--cream-dark);
+    }
+
+    .exp-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-dot {
+      position: absolute;
+      left: -2.32rem;
+      top: 0.45rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--cream);
+    }
+
+    .exp-role {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.04em;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* EDUCATION */
+    #education {
+      background: var(--cream);
+    }
+
+    .edu-item {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--gold);
+      padding: 1.35rem 1.5rem;
+      border-radius: 0 3px 3px 0;
+      margin-bottom: 1rem;
+    }
+
+    .edu-degree {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .edu-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .skills-block-title {
+      font-weight: 500;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      margin-top: 1.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .skills-block-title:first-child {
+      margin-top: 0;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .skill-tag {
+      font-size: 0.78rem;
+      font-weight: 400;
+      padding: 0.25rem 0.7rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 2px;
+      letter-spacing: 0.03em;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      margin-bottom: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    .cert-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 0.55rem;
+      flex-shrink: 0;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--cream);
+    }
+
+    .phase-block {
+      margin-bottom: 4rem;
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .phase-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: var(--cream-dark);
+      line-height: 1;
+      min-width: 3rem;
+    }
+
+    .phase-name {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .phase-tag {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .phase-status-badge {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+
+    .phase-status-badge.active {
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--tag-text);
+    }
+
+    .phase-status-badge.upcoming {
+      background: rgba(13, 27, 42, 0.06);
+      color: var(--text-muted);
+    }
+
+    .module-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed var(--card-border);
+      margin-bottom: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .module-label:first-child {
+      margin-top: 0;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--gold);
+      padding: 1.35rem 1.5rem;
+      border-radius: 0 3px 3px 0;
+      margin-bottom: 0.85rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .project-card:hover {
+      transform: translateX(5px);
+      box-shadow: -5px 0 0 var(--gold-light);
+    }
+
+    .project-card.placeholder {
+      background: rgba(245, 240, 232, 0.6);
+      border-left-color: var(--placeholder-border);
+      border-color: var(--placeholder-border);
+      opacity: 0.65;
+    }
+
+    .project-card.placeholder:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .project-title {
+      font-weight: 500;
+      font-size: 0.97rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .project-type {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-type.lab {
+      background: rgba(13, 27, 42, 0.06);
+      color: var(--text-muted);
+    }
+
+    .project-type.integration {
+      background: rgba(201, 168, 76, 0.1);
+      color: var(--tag-text);
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.71rem;
+      font-weight: 500;
+      padding: 0.18rem 0.55rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
+      transition: color 0.18s;
+      white-space: nowrap;
+    }
+
+    .project-link:hover {
+      color: var(--gold);
+    }
+
+    .placeholder-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--navy);
+    }
+
+    #contact .section-title {
+      color: var(--white);
+    }
+
+    .contact-intro {
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      max-width: 440px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .contact-item:hover {
+      background: rgba(201, 168, 76, 0.08);
+      border-color: rgba(201, 168, 76, 0.25);
+    }
+
+    .contact-item-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-platform {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+    }
+
+    .contact-arrow {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 1rem;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .contact-item:hover .contact-arrow {
+      color: var(--gold);
+      transform: translateX(3px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.25);
+      letter-spacing: 0.06em;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      nav {
+        padding: 0 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Bashar Albdour</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-ring hero-ring-3"></div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">AI / ML Engineer · Energy Engineer · Building Automation</p>
+      <h1 class="hero-name">Bashar<span>Albdour.</span></h1>
+      <p class="hero-subtitle">Energy Engineer transitioning into applied AI and machine learning — bringing real-world
+        engineering discipline, 100+ Crestron certifications, and a strong work ethic to the craft of building ML
+        pipelines, NLP models, and deployed AI systems.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">AI.SPIRE Program</span>
+        <span class="hero-badge">Python · PyTorch · SQL</span>
+        <span class="hero-badge">Continuous Learner</span>
+        <span class="hero-badge">GJU — MSc Candidate</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label fade-in">About</p>
+      <h2 class="section-title fade-in">Who I Am</h2>
+      <div class="divider fade-in"></div>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p>I am an Energy Engineer with a Bachelor's degree from the <strong>German Jordanian University</strong>,
+            currently pursuing a Master's in Environmental and Renewable Energy Engineering at GJU. My background spans
+            solar PV system design, AV pre-sales, building automation, and electrical engineering across Jordan, Saudi
+            Arabia, and Germany.</p>
+          <p>I have worked across the full cycle of engineering projects — from managing 40 MW+ PV sales targets to
+            architecting Crestron-based automation systems for smart buildings. I hold approximately <strong>100
+              Crestron certifications</strong>, with programming expertise in SIMPL, SIMPL+, and VT Pro-e.</p>
+          <p>I am now channelling that same engineering rigour and <strong>commitment to continuous learning</strong>
+            into applied AI and machine learning through the <strong>AI.SPIRE program</strong> — progressing
+            systematically from data pipelines and SQL through machine learning, NLP, retrieval-augmented generation,
+            and full production deployment.</p>
+        </div>
+        <div class="about-stats fade-in">
+          <div class="stat-card">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Modules Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">~100</div>
+            <div class="stat-label">Crestron Certifications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Countries Worked In</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Languages Spoken</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label fade-in">Background</p>
+      <h2 class="section-title fade-in">Experience</h2>
+      <div class="divider fade-in"></div>
+      <div class="timeline fade-in">
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-role">AV Pre-Sales &amp; Automation Engineer</div>
+          <div class="exp-company">Sustainable Smart Cities CO — Amman, Jordan</div>
+          <div class="exp-date">Apr 2025 – Jan 2026</div>
+          <div class="exp-desc">Designed and delivered tailored AV and building automation solutions for projects in
+            Jordan and Saudi Arabia. Developed Crestron-based automation systems covering control, lighting, and shading
+            — programming in SIMPL, SIMPL+, and VT Pro-e. Prepared BOQs, schematics, and technical documentation. Holds
+            approximately 100 Crestron certifications.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-role">Sales Engineer</div>
+          <div class="exp-company">Philadelphia Solar LLC — Amman, Jordan</div>
+          <div class="exp-date">Nov 2024 – Apr 2025</div>
+          <div class="exp-desc">Held individual responsibility for a 25 MW PV sales target in Jordan while independently
+            managing Algeria and Oman markets with an additional 15 MW quota. Delivered customised solar solutions,
+            managed the full sales pipeline, and served as the key liaison between technical and commercial teams.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-role">Intern — Electrical &amp; Instrumentation Engineer</div>
+          <div class="exp-company">ALL IN ONE-Electro &amp; Technologie GmbH — Frankfurt, Germany</div>
+          <div class="exp-date">Mar 2024 – Sep 2024</div>
+          <div class="exp-desc">Planned electrical circuits, performed load calculations and cable dimensioning, and
+            designed, assembled, and tested switchgear to relevant standards. Carried out on-site installation and
+            wiring of electrical systems.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-role">Intern — Energy Engineer</div>
+          <div class="exp-company">Watheq Al-braizat For Renewable Energy — Madaba, Jordan</div>
+          <div class="exp-date">Feb 2023 – Mar 2023</div>
+          <div class="exp-desc">Supported PV system planning with advanced software tools, participated in physical
+            installation with a quality inspection focus, and produced accurate technical documentation.</div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-dot"></div>
+          <div class="exp-role">Remote Volunteer Intern</div>
+          <div class="exp-company">Better World for Community Development — Amman, Jordan</div>
+          <div class="exp-date">Jan 2020 – Jan 2022</div>
+          <div class="exp-desc">Prepared reports and presentations, created digital content and newsletters, and
+            assisted in organising community events and workshops.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <p class="section-label fade-in">Academic</p>
+      <h2 class="section-title fade-in">Education</h2>
+      <div class="divider fade-in"></div>
+      <div class="fade-in">
+        <div class="edu-item">
+          <div class="edu-degree">Master of Science — Environmental and Renewable Energy Engineering</div>
+          <div class="edu-school">German Jordanian University — Amman, Jordan</div>
+          <div class="edu-date">Expected completion: 2027</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor's Degree — Energy Technology</div>
+          <div class="edu-school">German Jordanian University — Madaba, Jordan</div>
+          <div class="edu-date">Graduated: November 2024</div>
+          <div class="edu-desc">Graduation project: Research on battery systems for electric vehicles aimed at improving
+            battery model accuracy and optimising BMS to extend battery life and advance EV technology. Focus areas:
+            Wind Technology, Solar PV, Power Electronics, Energy Efficiency.</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Semester Abroad — Energy Technology</div>
+          <div class="edu-school">Brandenburg University of Technology — Cottbus, Germany</div>
+          <div class="edu-date">September 2024</div>
+          <div class="edu-desc">Focus areas: Power System Economics I, MATLAB programming and optimisation methods.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label fade-in">Toolkit</p>
+      <h2 class="section-title fade-in">Skills &amp; Certifications</h2>
+      <div class="divider fade-in"></div>
+      <div class="skills-grid fade-in">
+        <div>
+          <div class="skills-block-title">AI / ML &amp; Programming</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span
+              class="skill-tag">SQL</span><span class="skill-tag">Pandas</span><span
+              class="skill-tag">SQLAlchemy</span><span class="skill-tag">PostgreSQL</span><span
+              class="skill-tag">MATLAB</span><span class="skill-tag">Git &amp; GitHub</span><span class="skill-tag">Data
+              Pipelines</span><span class="skill-tag">ETL Design</span>
+          </div>
+          <div class="skills-block-title">Engineering &amp; Automation</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Solar PV System Design</span><span class="skill-tag">AV System
+              Architecture</span><span class="skill-tag">Building Automation</span><span class="skill-tag">Crestron
+              SIMPL / SIMPL+</span><span class="skill-tag">VT Pro-e</span><span class="skill-tag">Load
+              Calculations</span><span class="skill-tag">Switchgear Design</span><span
+              class="skill-tag">AutoCAD</span><span class="skill-tag">PVsyst</span><span
+              class="skill-tag">LTspice</span>
+          </div>
+          <div class="skills-block-title">Languages</div>
+          <div class="skills-tags">
+            <span class="skill-tag">Arabic — Native</span><span class="skill-tag">English — C1 (TOEFL)</span><span
+              class="skill-tag">German — B1 (Goethe)</span>
+          </div>
+        </div>
+        <div>
+          <div class="skills-block-title">Certifications</div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>Crestron Technician Fundamentals (CTI-CTF) — plus approximately 100 additional
+            Crestron certifications covering automation, control systems, lighting, and shading
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>P101 Crestron Programming (CTI-CTF)
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>TOEFL — English Language Certified (C1)
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>Goethe — German Language Certified (B1)
+          </div>
+          <div class="skills-block-title" style="margin-top:2rem;">What I Bring</div>
+          <div class="cert-item">
+            <div class="cert-dot"></div><strong style="font-weight:500;color:var(--text-primary);">Commitment</strong> —
+            from 40 MW+ PV targets to 100 Crestron certifications, I follow through on what I take on.
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div><strong style="font-weight:500;color:var(--text-primary);">Continuous
+              learning</strong> — engineering in Germany, studying in Jordan, now building AI systems: I adapt and grow
+            deliberately.
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div><strong style="font-weight:500;color:var(--text-primary);">Cross-domain
+              thinking</strong> — I connect real-world engineering rigour to ML system design and problem framing.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label fade-in">AI.SPIRE Program</p>
+      <h2 class="section-title fade-in">Projects</h2>
+      <div class="divider fade-in"></div>
+
+      <!-- PHASE 01 -->
+      <div class="phase-block fade-in">
+        <div class="phase-header">
+          <div class="phase-number">01</div>
+          <div class="phase-meta">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;">
+              <div class="phase-name">Foundations</div>
+              <span class="phase-status-badge active">Completed</span>
+            </div>
+            <div class="phase-tag">Modules 1 – 3 · Git, Data Pipelines, PyTorch, SQL &amp; ETL</div>
+          </div>
+        </div>
+
+        <div class="module-label">Module 1 — Git, Environment Setup &amp; Collaboration</div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Environment &amp; Git Workflows</div>
+            <span class="project-type lab">Lab</span>
+          </div>
+          <div class="project-desc">Set up a reproducible Python development environment and practised branching,
+            merging, and pull request workflows for collaborative engineering work.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS
+                Code</span><span class="tag">Virtual Environments</span><span class="tag">Branch Management</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m1-l1-git-workflows-BasharAlbdour" target="_blank"
+              rel="noopener" class="project-link">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Team Collaboration Pipeline</div>
+            <span class="project-type integration">Integration</span>
+          </div>
+          <div class="project-desc">Collaborated on a shared repository using feature branches and structured code
+            review, resolving merge conflicts and maintaining a clean commit history throughout.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Git Collaboration</span><span class="tag">Pull Requests</span><span
+                class="tag">Code Review</span><span class="tag">Merge Conflict Resolution</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m1-l1-git-workflows-BasharAlbdour" target="_blank"
+              rel="noopener" class="project-link">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="module-label">Module 2 — Data Pipelines &amp; PyTorch Fundamentals</div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">Data Pipeline</div>
+            <span class="project-type lab">Lab</span>
+          </div>
+          <div class="project-desc">Built an end-to-end data loading and preprocessing pipeline using pandas, with
+            validation checks and reproducible outputs ready for downstream modelling.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Data
+                Cleaning</span><span class="tag">Pipeline Design</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m2-l2-data-pipeline-BasharAlbdour" target="_blank"
+              rel="noopener" class="project-link">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">PyTorch Neural Network</div>
+            <span class="project-type integration">Integration</span>
+          </div>
+          <div class="project-desc">Implemented a complete neural network training loop in PyTorch — covering data
+            loading, forward and backward passes, and evaluation metrics — as a foundation for all deep learning work
+            ahead.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">PyTorch</span><span class="tag">Tensor Operations</span><span
+                class="tag">Training Loops</span><span class="tag">Model Evaluation</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m2-i2-pytorch-BasharAlbdour" target="_blank" rel="noopener"
+              class="project-link">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="module-label">Module 3 — Relational Databases &amp; SQL</div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">SQL Analytics &amp; KPI Dashboard</div>
+            <span class="project-type lab">Lab</span>
+          </div>
+          <div class="project-desc">Developed a comprehensive SQL analytics suite for a multi-table PostgreSQL database,
+            using joins, aggregations, window functions, and CTEs to surface actionable business KPIs.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Window
+                Functions</span><span class="tag">CTEs</span><span class="tag">Data Modelling</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m3-l3-sql-analytics-BasharAlbdour" target="_blank"
+              rel="noopener" class="project-link">View Repo →</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-title">End-to-End ETL Pipeline</div>
+            <span class="project-type integration">Integration</span>
+          </div>
+          <div class="project-desc">Built a production-style ETL pipeline in Python, integrating PostgreSQL, Pandas, and
+            SQLAlchemy to clean, transform, validate, and load customer analytics data for business insights.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span
+                class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">PyTest</span><span
+                class="tag">ETL Design</span></div>
+            <a href="https://github.com/LevelUp-Applied-AI/m2-i2-pytorch-BasharAlbdour" target="_blank" rel="noopener"
+              class="project-link">View Repo →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 02 -->
+      <div class="phase-block fade-in">
+        <div class="phase-header">
+          <div class="phase-number">02</div>
+          <div class="phase-meta">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;">
+              <div class="phase-name">ML &amp; NLP</div>
+              <span class="phase-status-badge upcoming">Upcoming</span>
+            </div>
+            <div class="phase-tag">Modules 4 – 7 · Visualization, Machine Learning, NLP, Deep Learning</div>
+          </div>
+        </div>
+
+        <div class="module-label">Module 4 — Data Visualization &amp; Communication</div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Data Visualization Project</div><span class="project-type lab">Lab +
+              Integration</span>
+          </div>
+          <div class="placeholder-text">Coming soon — analytical charts and data storytelling from a real dataset.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Data
+                Storytelling</span></div>
+          </div>
+        </div>
+
+        <div class="module-label">Module 5 — Machine Learning Fundamentals</div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">ML Model Project</div><span class="project-type lab">Lab + Integration</span>
+          </div>
+          <div class="placeholder-text">Coming after Module 5 — training, evaluating, and comparing ML models.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">scikit-learn</span><span class="tag">Model Evaluation</span></div>
+          </div>
+        </div>
+
+        <div class="module-label">Modules 6 – 7 — NLP &amp; Deep Learning</div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">NLP Pipeline</div><span class="project-type lab">Lab</span>
+          </div>
+          <div class="placeholder-text">Coming after Module 6 — text preprocessing, NLP pipelines, and spaCy.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">spaCy</span><span class="tag">Text Preprocessing</span><span
+                class="tag">NLP Pipelines</span></div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Deep Learning for NLP</div><span
+              class="project-type integration">Integration</span>
+          </div>
+          <div class="placeholder-text">Coming after Module 7 — transformer-based models and Hugging Face.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span
+                class="tag">Transformers</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 03 -->
+      <div class="phase-block fade-in">
+        <div class="phase-header">
+          <div class="phase-number">03</div>
+          <div class="phase-meta">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;">
+              <div class="phase-name">Retrieval &amp; Knowledge Graphs</div>
+              <span class="phase-status-badge upcoming">Upcoming</span>
+            </div>
+            <div class="phase-tag">Modules 8 – 9 · RAG, Vector Search, Graph Systems</div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Retrieval-Augmented Generation System</div>
+          </div>
+          <div class="placeholder-text">Coming after Module 8 — RAG pipelines, vector embeddings, and Weaviate.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">RAG</span><span class="tag">Weaviate</span><span
+                class="tag">Embeddings</span></div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Knowledge Graph Project</div>
+          </div>
+          <div class="placeholder-text">Coming after Module 9 — triple stores, SPARQL, and knowledge representation.
+          </div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">SPARQL</span><span class="tag">Triple Stores</span><span
+                class="tag">Knowledge Representation</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 04 -->
+      <div class="phase-block fade-in">
+        <div class="phase-header">
+          <div class="phase-number">04</div>
+          <div class="phase-meta">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;">
+              <div class="phase-name">Deployment</div>
+              <span class="phase-status-badge upcoming">Upcoming</span>
+            </div>
+            <div class="phase-tag">Modules 10 – 11 · APIs, Monitoring, MLOps</div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">API Development &amp; Containerisation</div>
+          </div>
+          <div class="placeholder-text">Coming after Module 10 — production-ready ML API with FastAPI and Docker.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">FastAPI</span><span class="tag">Docker</span><span
+                class="tag">Deployment</span></div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Monitoring &amp; Production Systems</div>
+          </div>
+          <div class="placeholder-text">Coming after Module 11 — observability, logging, and production reliability.
+          </div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Monitoring</span><span class="tag">Logging</span><span
+                class="tag">MLOps</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 05 -->
+      <div class="phase-block fade-in">
+        <div class="phase-header">
+          <div class="phase-number">05</div>
+          <div class="phase-meta">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.15rem;">
+              <div class="phase-name">Capstone</div>
+              <span class="phase-status-badge upcoming">Upcoming</span>
+            </div>
+            <div class="phase-tag">Module 12 · End-to-End AI/ML System</div>
+          </div>
+        </div>
+        <div class="project-card placeholder">
+          <div class="project-header">
+            <div class="project-title">Capstone Project</div>
+          </div>
+          <div class="placeholder-text">Coming after Module 12 — a full AI/ML system integrating all program skills,
+            from pipeline to production.</div>
+          <div class="project-footer">
+            <div class="tags"><span class="tag">Full Stack AI</span><span class="tag">MLOps</span><span
+                class="tag">End-to-End System</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label fade-in">Contact</p>
+      <h2 class="section-title fade-in">Get in Touch</h2>
+      <div class="divider fade-in"></div>
+      <p class="contact-intro fade-in">Open to collaborations, opportunities, and conversations about AI/ML engineering,
+        energy systems, and building automation.</p>
+      <div class="contact-links fade-in">
+        <a href="https://github.com/BasharAlbdour" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-item-left"><span class="contact-platform">GitHub</span><span
+              class="contact-value">github.com/BasharAlbdour</span></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/bashar-albdour/" target="_blank" rel="noopener" class="contact-item">
+          <div class="contact-item-left"><span class="contact-platform">LinkedIn</span><span
+              class="contact-value">linkedin.com/in/bashar-albdour</span></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="mailto:bashar.albdour@outlook.com" class="contact-item">
+          <div class="contact-item-left"><span class="contact-platform">Email</span><span
+              class="contact-value">bashar.albdour@outlook.com</span></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="tel:+962796651887" class="contact-item">
+          <div class="contact-item-left"><span class="contact-platform">Phone</span><span class="contact-value">+962 796
+              651 887</span></div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Bashar Albdour · AI.SPIRE Program · Built with GitHub Pages</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+
+</html>
