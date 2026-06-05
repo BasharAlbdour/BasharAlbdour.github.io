@@ -1,6 +1,6 @@
 # Bashar Albdour — Portfolio
  
-**Live site:** https://basharalbdour.github.io
+**Live site:** https://basharalbdour.github.io/
  
 Energy Engineer transitioning into applied AI and machine learning through the AI.SPIRE program. This portfolio documents my progression from foundational data pipelines and SQL through machine learning, NLP, retrieval-augmented generation, and full production deployment.
  
